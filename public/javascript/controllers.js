@@ -27,10 +27,10 @@ angular.module('picterest')
                                 alert('success', 'Ohoo! ', 'Your account created successfully, please login now to continue.', 3300);
                                 $state.go('home');
                                 break;
-                            case ' email_1 dup key':
+                            case ' picterest.users.$email_1 dup key':
                                 alert('danger', 'Oops! ', 'An account already exists with this email.', 3300);
                                 break;
-                            case ' username_1 dup key':
+                            case ' picterest.users.$username_1 dup key':
                                 alert('danger', 'Sorry! ', 'This username has been taken.', 3300);
                                 break;
                             default:
