@@ -102,7 +102,7 @@ router.get('/mypics', passport.authenticate('jwt', { session: false }), function
 
 //To add a pic in mywall
 router.post('/addpic', passport.authenticate('jwt', { session: false }), function (req, res) {
-    var reg = new RegExp('^https://(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:/[^/#?]+)+\.(?:jpg|jpeg|gif|png)$');
+    var reg = new RegExp('^https://(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:/[^/#?]+)+\.(?:jpg|jpeg|png)$');
     if (reg.test(req.body.url)) {
         var newPic = new Pic({
             owner: req.user.email,
