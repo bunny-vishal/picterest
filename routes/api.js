@@ -26,7 +26,7 @@ router.post('/signup/local', function (req, res) {
         //attempt to save this neUser
         newUser.save(function (err) {
             if (err) {
-                return res.json(err.errmsg.split(':')[2]);
+                return res.json(err);
             }
             res.json("Account creation success");
         });
