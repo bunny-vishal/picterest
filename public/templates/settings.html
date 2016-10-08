@@ -1,0 +1,139 @@
+<h3 class="text-center white">Update Info</h3>
+
+
+<!-- profilePic Modal -->
+<div id="profilePicModal" class="custom-modal">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-sm-8 col-centered">
+                <!-- Modal content -->
+                <div class="custom-modal-content drop-in-modal">
+                    <div class="custom-modal-header">
+                        <span ng-click="cancelUpdateProPic()" class="custom-close" id="updateProPicCloseBtn"><i class="fa fa-times" aria-hidden="true"></i></span>
+                        <h4>Add a new pic to your wall</h4>
+                    </div>
+                    <div class="custom-modal-body">
+
+                        <div class="image-preview-frame">
+                            <img src="{{url}}" alt="Image not found &nbsp; &nbsp; &nbsp;" class="img-rounded thumbnail preview-pic-img" id="update-pro-pic-src" />
+                        </div>
+
+                        <form ng-submit="updateProfilePic()" name="profilePic" novalidate>
+                            <div class="form-group">
+                                <input ng-model="url" pattern="^https://(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:/[^/#?]+)+\.(?:jpg|jpeg|gif|png)$" class="form-input black" id="profile-img-url" ng-maxlength="300" type="url"
+                                    name="url" placeholder="Image url" required/>
+                            </div>
+
+                            <p class="help-block" ng-show="profilePic.url.$dirty && profilePic.url.$invalid">
+                                Please enter a url that starts with https:// and url end with jpg or png or gif or jpeg.
+                            </p>
+
+                            <div class="text-center">
+                                <button type="submit" ng-disabled="profilePic.$invalid" class="btn btn-md btn-primary">Add</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom modal end -->
+
+<div class="row" style="margin-top:1%">
+    <div class="col-md-2"></div>
+    <div class="col-xs-12 col-sm-6 col-md-4 text-center">
+        <div >
+            <img src="{{profilepic}}" on-error-src='https://i.imgur.com/GEjNHUo.png' class="profile-pic img-rounded"
+                ng-click="getUpdateModal()" alt="profile pic" />
+        </div>
+        <div style="overflow: hidden;">
+            <h4 class="text-center white">{{username}}</h4>
+            <h4 class="text-center white">{{email}}</h4>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4">
+        <form class="update-form" name="profile" ng-submit="updateProfile()">
+
+            <div class="form-group">
+                <input class="form-input inline-block" ng-model="city" pattern="^[a-zA-Z]+[a-zA-Z\s]*$" ng-maxlength="60" type="text" name="city"
+                    placeholder={{cityPlaceholder}} />
+            </div>
+
+            <p class="help-block white" ng-show="profile.city.$dirty && profile.city.$invalid">
+                Please enter a valid city name
+            </p>
+
+            <div class="form-group">
+                <input class="form-input inline-block" ng-model="state" pattern="^[a-zA-Z]+[a-zA-Z\s]*$" ng-maxlength="60" type="text" name="state"
+                    placeholder={{statePlaceholder}} />
+            </div>
+
+            <p class="help-block white" ng-show="profile.state.$dirty && profile.state.$invalid">
+                Please enter a valid state name
+            </p>
+
+            <div class="form-group">
+                <input class="form-input inline-block" ng-model="country" pattern="^[a-zA-Z]+[a-zA-Z\s]*$" ng-maxlength="60" type="text"
+                    name="country" placeholder={{countryPlaceholder}} />
+            </div>
+
+            <p class="help-block white" ng-show="profile.country.$dirty && profile.country.$invalid">
+                Please enter a valid country name
+            </p>
+
+            <div class="text-center">
+                <button type="submit" ng-disabled="profile.$invalid" class="btn btn-md btn-primary">
+                    Change
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<hr style="width: 70%" />
+
+<div class="row">
+    <div class="col-xs-11 col-sm-6 col-md-4 col-centered">
+        <h3 class="text-center white">Update password</h3>
+
+        <form name="updatePassword" class="update-form" ng-submit="changePassword()" novalidate>
+
+            <div class="form-group">
+                <input class="form-input" ng-model="password" ng-minlength="8" ng-maxlength="60" type="password" name="password" placeholder="Current password"
+                    required/>
+            </div>
+
+            <div class="form-group">
+                <input ng-model="password1" class="form-input" ng-minlength="8" ng-maxlength="60" type="password" name="password1" placeholder="New password"
+                    required />
+            </div>
+
+            <div class="form-group">
+                <input validate-equals='password1' ng-model="password2" class="form-input" ng-minlength="8" ng-maxlength="60" type="password"
+                    name="password2" placeholder="Confirm new password" required />
+            </div>
+
+            <p class="help-block white" ng-show="updatePassword.password2.$dirty && updatePassword.password2.$invalid">
+                passwords do not match.
+            </p>
+
+            <p class="help-block white" ng-if="updatePassword.password1.$dirty && !password1.length || updatePassword.password2.$dirty && !password2.length">
+                password must be minimum 8 characters.
+            </p>
+            <div class="text-center">
+                <button type="submit" ng-disabled="updatePassword.$invalid" class="btn btn-md btn-success">
+                    Change password
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
